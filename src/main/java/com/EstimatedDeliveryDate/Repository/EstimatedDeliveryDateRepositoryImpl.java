@@ -11,7 +11,10 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 public class EstimatedDeliveryDateRepositoryImpl implements EstimatedDeliveryDateRepository{
 	@Autowired
 	private DynamoDBMapper mapper;
-
+	
+    public void setMapper(DynamoDBMapper mapper) {
+    	this.mapper=mapper;
+    }
 	// DynamoDBMapper loads the item using serviceId and maps to Holiday object
 	public Holidays getHolidays(String ServiceId) {
 		return mapper.load(Holidays.class, ServiceId);
